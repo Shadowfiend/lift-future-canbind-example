@@ -8,9 +8,14 @@
     <div id="main" class="lift:surround?with=default;at=content">
       <h2>Welcome to your project!</h2>
       <p>
-	<span class="lift:helloWorld.howdy">
-	  Welcome to your Lift app at <span id="time">Time goes here</span>
-	</span>
+	<div class="lift:helloWorld.howdy">
+    Welcome to your Lift app at
+    <ul>
+      <li><time id="now">Time goes here</time>,</li>
+      <li>then at <time id="later">calculating...</time>,</li>
+      <li>and finally at <time id="latest">calculating more...</time>.</li>
+    </ul>
+	</div>
       </p>
     </div>
   </body>
