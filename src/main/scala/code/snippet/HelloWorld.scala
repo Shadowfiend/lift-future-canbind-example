@@ -8,12 +8,11 @@ import scala.concurrent.ExecutionContext.Implicits.global
 
 import net.liftweb.actor.LAFuture
 import net.liftweb.common._
-import net.liftweb.http.S
+import net.liftweb.http._
 import net.liftweb.util._
   import Helpers._
 
 import code.lib._
-import FutureBinds._
 
 class HelloWorld {
   def date: Box[Date] = DependencyFactory.inject[Date] // inject the date

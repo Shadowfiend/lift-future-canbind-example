@@ -1,4 +1,4 @@
-name := "Lift 2.6 starter template"
+name := "Lift Futures CanBind example"
 
 version := "0.0.4"
 
@@ -18,7 +18,7 @@ unmanagedResourceDirectories in Test <+= (baseDirectory) { _ / "src/main/webapp"
 scalacOptions ++= Seq("-deprecation", "-unchecked")
 
 libraryDependencies ++= {
-  val liftVersion = "2.6-RC1"
+  val liftVersion = "3.0-SNAPSHOT"
   Seq(
     "org.scala-lang"    % "scala-actors"       % "2.11.1"           % "compile",
     "net.liftweb"       %% "lift-webkit"        % liftVersion        % "compile",
