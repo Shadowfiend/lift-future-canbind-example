@@ -22,24 +22,57 @@ class HelloWorld {
   }
   def futureTime = {
     "#later" #> Future {
-      Thread.sleep(10000)
+      Thread.sleep(5000)
 
       "time *" #> date.map(_.toString)
     }
   }
   def laFutureTime = {
     "#latest" #> LAFuture.build {
-      Thread.sleep(20000)
+      Thread.sleep(10000)
 
       "time *" #> date.map(_.toString)
     }
   }
 
+  lazy val timeRenderer = {
+    SHtml.idMemoize { _ =>
+      nowTime &
+      futureTime &
+      laFutureTime
+    }
+  }
+
   // replace the contents of the element with id "time" with the date
   def howdy = {
-    nowTime &
-    futureTime &
-    laFutureTime
+    "^" #> timeRenderer
+  }
+
+  @volatile var renderThisTime = false
+  lazy val laterRenderer = {
+    SHtml.idMemoize { _ =>
+      if (renderThisTime) {
+        PassThru
+      } else {
+        ClearNodes
+      }
+    }
+  }
+  def slowRender = {
+    Thread.sleep(10000)
+    PassThru
+  }
+  def renderLater = {
+    "^" #> laterRenderer
+  }
+
+  def tryAgain = {
+    "button [onclick]" #> SHtml.ajaxInvoke(() => {
+      renderThisTime = true
+
+      timeRenderer.setHtml &
+      laterRenderer.setHtml
+    })
   }
 }
 

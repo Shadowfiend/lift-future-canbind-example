@@ -7,16 +7,26 @@
   <body class="lift:content_id=main">
     <div id="main" class="lift:surround?with=default;at=content">
       <h2>Welcome to your project!</h2>
-      <p>
-	<div class="lift:helloWorld.howdy">
-    Welcome to your Lift app at
-    <ul>
-      <li><time id="now">Time goes here</time>,</li>
-      <li>then at <time id="later">calculating...</time>,</li>
-      <li>and finally at <time id="latest">calculating more...</time>.</li>
-    </ul>
-	</div>
-      </p>
+
+      <div data-lift="HelloWorld.howdy">
+        Welcome to your Lift app at
+
+        <ul>
+          <li><time id="now">Time goes here</time>,</li>
+          <li>then at <time id="later">calculating...</time>,</li>
+          <li>and finally at <time id="latest">calculating more...</time>.</li>
+        </ul>
+
+        <div data-lift="HelloWorld.renderLater">
+          <div data-lift="lazy-load">
+            <div data-lift="HelloWorld.slowRender">
+              Lazily rendered from AJAX request
+            </div>
+          </div>
+        </div>
+
+        <button data-lift="HelloWorld.tryAgain">Try again</button>
+      </div>
     </div>
   </body>
 </html>
